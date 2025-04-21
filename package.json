@@ -1,0 +1,12 @@
+{
+  "name": "my-new-todo",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "tailwindcss":"npx tailwind -i ./src/input.css -o ./build/style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
