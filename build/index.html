@@ -7,27 +7,84 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gradient-to-r from-blue-400 to-blue-600">
-    <div class="container flex flex-col justify-center items-center mx-auto mt-16 lg:flex">
-        <div class="bg-gradient-to-t from-blue-800 to-white py-8 px-28">
+    <div class="container flex flex-col items-center mx-auto mt-16">
+        <div class="bg-gradient-to-t from-blue-800 to-white px-4 py-4">
             <h1 class="text-gray-700 font-bold text-xl relative my-4">My todo<span>&#128221</span></h1>
-            <div class="flex flex-row space-x-4">
+            <div class="flex flex-row space-x-2">
                 <input class="py-2 outline-none caret-slate-900 text-center" type="text" id="input-box" placeholder="Input your task" required>
-                <button class="bg-blue-800 px-2 py-1 text-sm text-gray-100 hover:bg-blue-700">Add Task</button>
-            </div>
-            <div class="flex flex-row gap-4 mt-2 text-neutral-900 sm:flex-col">
-                <span>Total todos: <span id="total">0</span></span>
-                <span>completed: <span id="compl">0</span></span>
-                <span>Uncompleted:<span id="uncompl">0</span></span>
+                <button class="bg-blue-800 px-2 py-1 text-sm text-gray-100 hover:bg-blue-900" id="addBtn">Add Task</button>
             </div>
         </div>
-        <div class="bg-gradient-to-r from-blue-600 to-blue-800 py-8 px-36 mt-10">
-            <h1 class="text-xl font-medium text-neutral-800">My todos</h1>
-            <ul class="pt-2">
-                <!-- <li>Bathing</li>
-                <li>Eating</li>
-                <li>Sleeping</li> -->
-            </ul>
+        <div class="bg-gradient-to-br from-blue-600 to-blue-800 px-24 mt-10">
+            <h1 class="text-xl font-medium text-neutral-800 mt-3">My todos</h1>
+            <div class="pt-2 flex flex-col" id="todo">
+              
+            </div>
         </div>
     </div>
+
+    <script>
+
+let addBtn=document.querySelector("#addBtn")
+let todo=document.querySelector("#todo")
+
+// addBtn.addEventListener('click', ()=>{
+//     let input=document.querySelector("#input-box")
+//     if(input.value === ""){
+//         alert('you must add something');
+//         return;
+//     }else{
+//         let todos=document.createElement("div");
+//         todos.classList="todoItem"
+//         todos.innerHTML=`<span class="todoLi flex flex-row justify-between space-x-6 py-2 items-center">
+//              <input type="checkbox" class="select">
+//              <p class="task-text">${input.value}</p>
+//              <button class="delete-btn bg-red-400 px-2 rounded-md text-white bg-red-800">delete</button>
+//         </span>`
+//         todo.appendChild(todos)
+
+//         input.value='';
+//     }
+// })
+
+
+
+//adding a task
+addBtn.addEventListener('click', ()=>{
+    let input=document.querySelector("#input-box")
+    if(input.value === ''){
+        alert('You must add something')
+        return;
+    }else{
+    let todos = document.createElement("div");
+    todos.classList.add("todoItem");
+
+    todos.innerHTML = `
+        <span class="flex flex-row justify-between space-x-6 py-3 items-center">
+            <input type="checkbox" class="select">
+            <p class="task-text">${input.value}</p>
+            <button class="delete-btn bg-red-400 px-2 rounded-md text-white">delete</button>
+        </span>
+    `;
+    todo.appendChild(todos);
+    input.value = "";
+
+
+          // Add event listener for delete button
+          todos.querySelector(".delete-btn").addEventListener("click", function () {
+            todos.remove();
+        });
+
+        //checking my todo
+        todos.querySelector(".select").addEventListener("change", function (e) {
+            if (e.target.checked) {
+                todos.querySelector(".task-text").classList.add("line-through", "text-red-400");
+            } else {
+                todos.querySelector(".task-text").classList.remove("line-through", "text-red-400");
+            }
+        });
+    }
+})
+    </script>
 </body>
 </html>
