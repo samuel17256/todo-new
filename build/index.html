@@ -60,9 +60,9 @@ addBtn.addEventListener('click', ()=>{
     todos.classList.add("todoItem");
 
     todos.innerHTML = `
-        <span class="flex flex-row justify-between space-x-6 py-3 items-center">
+        <span class="flex flex-row justify-between space-x-6 py-3 items-center text-white">
             <input type="checkbox" class="select">
-            <p class="task-text text-white">${input.value}</p>
+            <p class="task-text">${input.value}</p>
             <button class="delete-btn bg-red-400 px-2 rounded-md text-white">delete</button>
         </span>
     `;
